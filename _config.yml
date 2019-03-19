@@ -9,7 +9,7 @@
 title: Foxcii
 brief-intro: Front-end Dev Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://blog.foxcii.com
+url: "https://blog.foxcii.com"
 
 permalink: /:year/:month/:day/:title/
 
