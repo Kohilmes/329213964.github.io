@@ -31,10 +31,10 @@ disqus_shortname: #foxcii
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
-hm.src = "//hm.baidu.com/hm.js?dd73ec8dde1aa58c917ad40dbda18edc";
+# hm.src = "//hm.baidu.com/hm.js?dd73ec8dde1aa58c917ad40dbda18edc";
 # xxxxx字符串
 # cf8506e0ef223e57ff6239944e5d46a4
-# baidu_tongji_id: 
+baidu_tongji_id: dd73ec8dde1aa58c917ad40dbda18edc
 # google_analytics_id: UA-72449510-4 # google 分析追踪id
 
 # Build settings
