@@ -8,11 +8,7 @@ tags: Java
 
 * content
 
-* {:toc}
-
-* 
-
-
+[TOC]
 
  [深入理解Java中的final关键字](http://www.dadaguo.mobi/article/final)
 
