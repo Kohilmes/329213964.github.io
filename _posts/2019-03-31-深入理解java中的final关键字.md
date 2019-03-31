@@ -10,8 +10,6 @@ tags: Java
 {:toc}
  [深入理解Java中的final关键字](https://blog.foxcii.com/2019/03/31/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E4%B8%AD%E7%9A%84final%E5%85%B3%E9%94%AE%E5%AD%97/)
 
-# [深入理解Java中的final关键字](https://blog.foxcii.com/2019/03/31/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E4%B8%AD%E7%9A%84final%E5%85%B3%E9%94%AE%E5%AD%97/)
-
 Java中的final关键字非常重要，它可以应用于类、方法以及变量。这篇文章中我将带你看看什么是final关键字？将变量，方法和类声明为final代表了什么？使用final的好处是什么？最后也有一些使用final关键字的实例。final经常和static一起使用来声明常量，你也会看到final是如何改善应用性能的。
 
 
