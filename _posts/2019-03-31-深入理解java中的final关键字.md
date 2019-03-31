@@ -2,16 +2,15 @@
 layout:post
 title: "深入理解java中的final关键字"
 date: 2019-03-31 15:20:31
-categories:Java
-tags:Java
-
+categories: Java
+tags: Java
 ---
 
-* content
+content
 
-* {:toc}
+{:toc}
 
-* 
+
 
 
 
