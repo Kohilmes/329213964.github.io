@@ -59,11 +59,10 @@ excerpt_separator: "\n\n\n\n"
 gems: [jekyll-paginate]
 paginate: 6
 
-comment:
-  gitment:
-    enable: true
-    githubID: 329213964
-    repo: 329213964.github.io
-    ClientID: a8535281487c521457d4
-    ClientSercret: a26dc420a71d51dbaa6eb41e882b4a0651bc5351
-    lazy: true
+gitment:
+  enable: true
+  githubID: 329213964
+  repo: 329213964.github.io
+  ClientID: a8535281487c521457d4
+  ClientSercret: a26dc420a71d51dbaa6eb41e882b4a0651bc5351
+  lazy: true
