@@ -1,10 +1,11 @@
 {% if site.comment_gitment_repo %}
 <div id="gitmentContainer"></div>
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
         var gitment = new Gitment({
-                id: '<%=page.title%>',
+                id: md5(location.href),
                 owner: '{{site.github_username}}',
                 repo: '{{site.comment_gitment_repo}}',
         oauth: {
