@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "SpringBoot入门"
 date: 2019-04-10
@@ -129,7 +129,7 @@ public class HelloController {
 
 ### 6、简化部署
 
-![SpringBoot-maven-package](images/SpringBoot/SpringBoot-maven-package.png)
+![SpringBoot-maven-package](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/SpringBoot/SpringBoot-maven-package.png)
 
 在pom/xml文件引用插件
 
@@ -316,7 +316,7 @@ public @interface EnableAutoConfiguration {
 
 ​			给容器导入许多的自动配置类(xxxAutoConfiguration)；就是给容器导入这个场景需要的所有组件，并配置好这些组件；
 
-​		![AutoConfigurationImportSelector-debug](C:\Users\三日鹤\Documents\GitHub\3333.github.io\_posts\images\SpringBoot\SpringBoot-AutoConfigurationImportSelector-debug.png)
+​		![AutoConfigurationImportSelector-debug](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/SpringBoot/SpringBoot-AutoConfigurationImportSelector-debug.png)
 
 有了自动配置类，免去了我们手动配置填写注入功能组件等工作；
 
@@ -328,11 +328,11 @@ public @interface EnableAutoConfiguration {
 
 IDEA都支持Spring的项目创建向导快速创建一个Spring Boot项目：
 
-![Spring Initializer1](C:\Users\三日鹤\Documents\GitHub\3333.github.io\_posts\images\SpringBoot\SpringBoot-Spring Initializer1.png)
+![Spring Initializer1](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/SpringBoot/SpringBoot-Spring Initializer1.png)
 
-![](C:\Users\三日鹤\Documents\GitHub\3333.github.io\_posts\images\SpringBoot\SpringBoot-Spring Initializer2.png)
+![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/SpringBoot/SpringBoot-Spring Initializer2.png)
 
-![](C:\Users\三日鹤\Documents\GitHub\3333.github.io\_posts\images\SpringBoot\SpringBoot-Spring Initializer3.png)
+![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/SpringBoot/SpringBoot-Spring Initializer3.png)
 
 选择所需的模块创建即可；向导联网创建出Spring Boot项目；
 
@@ -452,4 +452,202 @@ pets:
 ```yaml
 pets: [cat,dog,pig]
 ```
+
+
+
+### 3、配置文件值注入
+
+配置文件
+
+```yaml
+person:
+  lastName: zhangsan
+  age: 18
+  boss: false
+  birth: 2012/12/12
+  maps: {k1: v1,k2: 12}
+  lists:
+    - lisi
+    - zhaoliu
+  dog:
+    name: fox
+    age: 2
+```
+
+javaBean:
+
+```java
+/**
+ * 将配置文件中的配置的每一个属性的值，映射到这个组件中
+ * @ConfigurationProperties：告诉SpringBoot将本类中的所有属性和配置文件中的相关配置进行绑定；
+ *      prefix = "person"：配置文件中那个下面的所有属性进行一一映射
+ *
+ * 只有这个组件是容器中的组件，才能使用容器提供的@ConfigurationProperties功能;
+ *
+ */
+@Component
+@ConfigurationProperties(prefix = "person")
+public class Person {
+    private String lastName;
+    private Integer age;
+    private Boolean boss;
+    private Date birth;
+
+    private Map<String,Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+```
+
+
+
+可以导入配置文件处理器，编写配置将有提示
+
+```xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+```
+
+#### 1、properties配置文件在idea中可能乱码
+
+#### 2、@value获取值和@ConfigurationProperties获取值比较
+
+|                      | @ConfigurationProperties | @Value     |
+| -------------------- | ------------------------ | ---------- |
+| 功能                 | 批量注入配置文件中的属性 | 一个个指定 |
+| 松散绑定（松散语法） | 支持                     | 不支持     |
+| SpEL                 | 不支持                   | 支持       |
+| JSR303数据校验       | 支持                     | 不支持     |
+| 复杂类型封装         | 支持                     | 不支持     |
+
+配置文件yml还是properties他们都能获取到值；
+
+如果，只是在某个业务逻辑中需要获取配置文件中的某项值，使用@Value
+
+如果，专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties；
+
+
+
+#### 3、配置文件注入值数据校验
+
+```java
+@Component
+@ConfigurationProperties(prefix = "person")
+@Validated
+public class Person {
+    @Email
+    private String lastName;
+    private Integer age;
+    private Boolean boss;
+    private Date birth;
+
+    private Map<String,Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+```
+
+
+
+#### 4、@PropertySource&@ImportResource
+
+@**PropertySource**：加载指定配置文件；
+
+```java
+@PropertySource(value = {"classpath:person.properties"})
+@Component
+@ConfigurationProperties(prefix = "person")
+//@Validated
+public class Person {
+//    @Email
+    private String lastName;
+    private Integer age;
+    private Boolean boss;
+    private Date birth;
+
+    private Map<String,Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+
+```
+
+@**ImportResource**：导入Spring的配置文件，让配置文件里面的内容生效；
+
+Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；
+
+想让Spring配置文件生效，加载其；@**ImportResource**标注在一个配置类上；
+
+```java
+@ImportReSource(locations = {"classpath:beans.xml"})
+导入Spring配置文件让其生效
+```
+
+
+
+不来编写Spring的配置文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helloService" class="com.atguigu.springboot.service.HelloService"></bean>
+
+
+</beans>
+```
+
+SpringBoot推荐给容器中添加组件的方式；推荐使用全注解的方式；
+
+1、配置类====Spring配置文件
+
+2、使用@Bean给容器中添加组件
+
+```java
+@Configuration
+public class myAppConfig {
+
+    @Bean
+    public HelloService helloService(){
+        System.out.println("配置类@Bean给容器中添加组件");
+        return new HelloService();
+    }
+}
+```
+
+
+
+### 4、配置文件占位符
+
+#### 1、随机数
+
+```java
+random.value、{random.int}、$(random.long)
+random.int(10)、{random.int[1024,65536]}
+
+```
+
+#### 2、占位符获取之前配置的值，如果没有可以使用：指定默认值
+
+```properties
+person.last-name=宗三${random.uuid}
+person.age=${random.int}
+person.birth=2012/12/12
+person.boss=false
+person.maps.k1=v1
+person.maps.k2=14
+person.lists=a,b,c
+person.dog.name=${person.hello:hello}_dog
+person.dog.age=15
+```
+
+
+
+
+
+
+
+
 
