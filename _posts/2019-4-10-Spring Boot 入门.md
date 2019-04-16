@@ -643,11 +643,27 @@ person.dog.name=${person.hello:hello}_dog
 person.dog.age=15
 ```
 
+### 5、
+
+#### 1、多Profile文件
+
+在主配置文件编写时，文件名可以是application-{profile}.properties/yml
+
+默认使用application.properties的配置
 
 
 
 
 
+#### 2、yml支持多文档块方式
+
+
+
+#### 3、激活指定profile
+
+​	1、在配置文件中指定 spring.profiles.active-dev
+
+​	
 
 
 
