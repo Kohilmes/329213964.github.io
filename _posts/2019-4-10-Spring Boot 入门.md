@@ -1124,3 +1124,42 @@ a:（slf4j+logback）：Spring(commons-logging)、Hibernate（jboss-logging）�
 ==2、用中间包来替换原有的日志框架；==
 
 ==3、我们导入slf4j其他的实现；==
+
+## 3、SpringBoot日志关系
+
+```xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+```
+
+SpringBoot的日志功能
+
+```xml
+	<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-logging</artifactId>
+      <version>2.1.4.RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+```
+
+底层依赖关系
+
+![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/SLF4J/20180131220946.png)
+
+总结：
+
+​	1）、SpringBoot底层也是使用slf4j+logback
+
+​	2）、SpringBoot也把其他的日志都替换成了slf4j；
+
+​	3）、中间替换包（版本更新内容有所变化）
+
+​	4）、如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？
+
+​		Spring框架用的是commons-logging；
+
+
+
