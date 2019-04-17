@@ -1137,12 +1137,12 @@ a:（slf4j+logback）：Spring(commons-logging)、Hibernate（jboss-logging）�
 SpringBoot的日志功能
 
 ```xml
-	<dependency>
+<dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-logging</artifactId>
       <version>2.1.4.RELEASE</version>
       <scope>compile</scope>
-    </dependency>
+</dependency>
 ```
 
 底层依赖关系
