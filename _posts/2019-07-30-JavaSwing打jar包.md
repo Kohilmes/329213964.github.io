@@ -10,9 +10,9 @@ tags: Java Swing exe4j Idea
 {:toc}
 今天把一年前写的小游戏打了个包 
 
-发在了https://tutor.foxcii.com/games/iwanna-version1.0.zip
+发在了 [https://tutor.foxcii.com/games/iwanna-version1.0.zip](https://tutor.foxcii.com/games/iwanna-version1.0.zip)
 
-如果系统没有jre环境则需选择https://tutor.foxcii.com/games/iwanna-version1.1.zip
+如果系统没有jre环境则需选择 [https://tutor.foxcii.com/games/iwanna-version1.1.zip](https://tutor.foxcii.com/games/iwanna-version1.1.zip)
 
 
 
@@ -48,6 +48,6 @@ new ImageIcon(getClass().getResource("/images/stone.png"));
 
 打包后如没有jre环境配置则会出现以下情况
 
-![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/posts/images/Swingiwanna-jre.png)
+![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/posts/images/Swing/iwanna-jre.png)
 
 如果将jre打包发送 则项目容量会相当大，这个问题有待解决；
