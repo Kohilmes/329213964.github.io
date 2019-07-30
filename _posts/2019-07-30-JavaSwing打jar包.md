@@ -12,6 +12,8 @@ tags: Java Swing exe4j Idea
 
 发在了https://tutor.foxcii.com/games/iwanna-version1.0.zip
 
+如果系统没有jre环境则需选择https://tutor.foxcii.com/games/iwanna-version1.1.zip
+
 
 
 ![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/Swing/iwannaindex.png)
