@@ -48,6 +48,6 @@ new ImageIcon(getClass().getResource("/images/stone.png"));
 
 打包后如没有jre环境配置则会出现以下情况
 
-![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/posts/images/Swing/iwanna-jre.png)
+![](https://raw.githubusercontent.com/329213964/329213964.github.io/master/_posts/images/Swing/iwanna-jre.png)
 
 如果将jre打包发送 则项目容量会相当大，这个问题有待解决；
